@@ -8,7 +8,35 @@ const routes = [
   {
     path:"/",
     name:"/",
-    component:()=>import("@/views/index")
+    redirect:"/home",
+    component:()=>import("@/views/index"),
+    children:[
+      {
+        path:"/home",
+        name:"/home",
+        component:()=>import("@/views/index/home"),
+      },
+      {
+        path:"/course",
+        name:"/course",
+        component:()=>import("@/views/index/course"),
+      },
+      {
+        path:"/info",
+        name:"/info",
+        component:()=>import("@/views/index/info"),
+      },
+      {
+        path:"/book",
+        name:"/book",
+        component:()=>import("@/views/index/book"),
+      },
+      {
+        path:"/mine",
+        name:"/mine",
+        component:()=>import("@/views/index/mine"),
+      }
+    ]
   }
 ]
 
