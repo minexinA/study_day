@@ -37,6 +37,10 @@ const routes = [
         component:()=>import("@/views/index/mine"),
       }
     ]
+  },
+  {
+    path:"/login",
+    component:()=>import("@/views/login")
   }
 ]
 

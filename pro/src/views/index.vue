@@ -27,6 +27,10 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
 
+<style>
+.index{
+    width: 100%;
+    height: 100%;
+}
 </style>

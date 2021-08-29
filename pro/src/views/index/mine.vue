@@ -1,6 +1,49 @@
 <template>
     <div class="mine">
-        我的
+        <div class="log_box">
+            <div class="self">
+                <div>
+                    <p style="color:skyblue">0</p>
+                    <p>我的学习</p>
+                </div>
+                <div>
+                     <p style="color:red">0</p>
+                    <p>本周课程</p>
+                </div>
+                <div>
+                     <p style="color:red">0</p>
+                    <p>我的积分</p>
+                </div>
+            </div>
+            <div class="log">
+                <van-image
+                    round
+                    width="80%"
+                    height="80%"
+                    style="margin:auto;display:block"
+                />
+                <p style="line-height:35px;color:white;text-align:center;font-size:18px">登录/注册</p>
+            </div>
+        </div>
+
+    <!-- 基础信息 -->
+    <div class="my">
+
+        <van-cell title="我的作业" is-link />
+        <van-cell title="我的社区" is-link style="margin-top:0px"/>
+        <van-cell title="课程订单" is-link />
+        <van-cell title="图书订单" is-link style="margin-top:0px"/>
+        <van-cell title="优惠券" is-link />
+        <van-cell title="学习卡" is-link style="margin-top:0px"/>
+        <van-cell title="分销中心" is-link style="margin-top:0px"/>
+        <van-cell title="消息中心" is-link />
+        <van-cell title="地址案例" is-link style="margin-top:0px"/>
+        <van-cell title="关于我们" is-link style="margin-top:0px"/>
+        <van-cell title="意见反馈" is-link style="margin-top:0px"/>
+        <van-cell title="设置" is-link style="margin-top:0px"/>
+
+    </div>
+
     </div>
 </template>
 
@@ -20,6 +63,59 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
-
+<style lang="scss">
+.mine{
+    width: 100%;
+    height: 100%;
+    background: #eee;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+    .log_box{
+        width: 100%;
+        height: 550px;
+        background: url(/img/login.png) no-repeat;
+        background-size: 100%;
+        position: relative;
+        background-color: #fff;
+        .self{
+            width: 100%;
+            height: 200px;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            div{
+                flex: 1;
+                border-right: 1px solid #ddd;
+                height: 80px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                p{
+                    margin-top: 10px;
+                    font-size: 24px;
+                }
+            }
+        }
+        .log{
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            left: 32%;
+            top: 10%
+        }
+    }
+    .my{
+        width: 100%;
+        margin-top: 50px;
+        .van-cell{
+            margin-top: 15px;
+            height: 65px;
+        }
+    }
+}
 </style>
+
