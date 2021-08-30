@@ -1,5 +1,5 @@
 <template>
-    <div class="login">
+    <div class="register">
         <div class="log_ban">
             <img src="/img/ban.png" alt="">
         </div>
@@ -8,17 +8,16 @@
             <div class="box">
                 <div class="use">
                     <input type="text" v-model="mobile" placeholder="请输入手机号">
-                    <p @click="getcode">获取验证码</p>
                 </div>
                 <div class="pho">
-                    <input type="text" v-model="code" placeholder="请输入短信验证码">
+                    <input type="text" v-model="password" placeholder="请输入密码">
                 </div>
 
                 <div class="pho_new">
-                    <p>未注册的手机号将自动注册</p>
-                    <p @click="$router.push('/register')">使用密码登录</p>
+                    <p>找回密码</p>
+                    <p @click="$router.push('/login')">注册/验证码</p>
                 </div>
-                <button @click="login">登录</button>
+                <button @click="logpwd">登录</button>
             </div>
         </div>
     </div>
@@ -29,35 +28,25 @@ export default {
   data() {
     return {
         mobile:"",
-        code:"",
+        password:"",
     };
   },
   mounted() {},
   methods: {
-      async getcode(){
-          var reg = /^1[3456789]\d{9}$/
-          if(!reg.test(this.mobile)){
-              alert("手机格式不正确")
-              return false
-          }
-          var res = await this.$axios.post("/smsCode",{mobile:this.mobile,sms_type:"login"})
-      },
-      async login(){
-          var {data:res} = await this.$axios.post("/login",{mobile:this.mobile,sms_code:this.code,type:2,client:1})
-          console.log(res)
-          this.$store.commit("saveToken",{token:res.data.remember_token,mobile:res.data.mobile})
+      async logpwd(){
+          var {data:res} = await this.$axios.post("/login",{mobile:this.mobile,password:this.password,type:1,client:'1'})
           if(res.code==200){
-              this.$router.push("/")
-          }else{
+              this.$router.push("/home")
               return
           }
+          console.log(res)
       }
   }
 };
 </script>
 
 <style scoped lang="scss">
-.login {
+.register {
   width: 100%;
   background-color: #eee;
   .log_ban {

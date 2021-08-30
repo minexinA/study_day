@@ -15,15 +15,32 @@
                     <p>我的积分</p>
                 </div>
             </div>
-            <div class="log">
-                <van-image
-                    round
-                    width="80%"
-                    height="80%"
-                    style="margin:auto;display:block"
-                />
-                <p style="line-height:35px;color:white;text-align:center;font-size:18px">登录/注册</p>
+
+            <div class="log" v-show="$store.state.token==''">
+                <div class="im">
+                    <van-image
+                        round
+                        width="80%"
+                        height="80%"
+                        src=""
+                        style="display:block;margin:auto"
+                    />
+                    <p style="text-align:center;color:white;line-height:30px;font-size:20px"><span>注册</span>/<span>登录</span></p>
+                </div>
             </div>
+            <div class="minenews"  v-show="$store.state.token!=''">
+                <div class="im">
+                    <van-image
+                        round
+                        width="80%"
+                        height="80%"
+                        src="https://img01.yzcdn.cn/vant/cat.jpeg"
+                    />
+                    
+                </div>
+                <b v-html="$store.state.mobile"></b>
+            </div>
+
         </div>
 
     <!-- 基础信息 -->
@@ -40,7 +57,7 @@
         <van-cell title="地址案例" is-link style="margin-top:0px"/>
         <van-cell title="关于我们" is-link style="margin-top:0px"/>
         <van-cell title="意见反馈" is-link style="margin-top:0px"/>
-        <van-cell title="设置" is-link style="margin-top:0px"/>
+        <van-cell title="设置" is-link style="margin-top:0px" @click="setnew"></van-cell>
 
     </div>
 
@@ -49,73 +66,99 @@
 
 <script>
 export default {
-    data() {
-        return {
-
-        };
-    },
-    mounted() {
-
-    },
-    methods: {
-
-    },
+  data() {
+    return {};
+  },
+  mounted() {},
+  methods: {
+    setnew() {
+      this.$router.push("/setup");
+    }
+  }
 };
 </script>
 
 <style lang="scss">
-.mine{
+.mine {
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  padding-bottom: 60px;
+  box-sizing: border-box;
+  .log_box {
     width: 100%;
-    height: 100%;
-    background: #eee;
-    padding-bottom: 60px;
-    box-sizing: border-box;
-    .log_box{
-        width: 100%;
-        height: 550px;
-        background: url(/img/login.png) no-repeat;
-        background-size: 100%;
-        position: relative;
-        background-color: #fff;
-        .self{
-            width: 100%;
-            height: 200px;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            div{
-                flex: 1;
-                border-right: 1px solid #ddd;
-                height: 80px;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-direction: column;
-                p{
-                    margin-top: 10px;
-                    font-size: 24px;
-                }
-            }
+    height: 550px;
+    background: url(/img/login.png) no-repeat;
+    background-size: 100%;
+    position: relative;
+    background-color: #fff;
+    .self {
+      width: 100%;
+      height: 200px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      div {
+        flex: 1;
+        border-right: 1px solid #ddd;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        p {
+          margin-top: 10px;
+          font-size: 24px;
         }
-        .log{
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            left: 32%;
-            top: 10%
-        }
+      }
     }
-    .my{
-        width: 100%;
-        margin-top: 50px;
-        .van-cell{
-            margin-top: 15px;
-            height: 65px;
-        }
+    .log {
+      width: 100%;
+      height: 100px;
+      position: absolute;
+      top: 70px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      .im {
+        width: 100px;
+        height: 100%;
+      }
     }
+    .minenews {
+      width: 100%;
+      height: 100px;
+      position: absolute;
+      top: 70px;
+      display: flex;
+      justify-content: start;
+      b{
+          margin-left: 20px;
+          margin-top: 15px;
+          font-size: 22px;
+          color: white;
+      }
+      .im {
+        width: 100px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .my {
+    width: 100%;
+    margin-top: 50px;
+    .van-cell {
+      margin-top: 15px;
+      height: 65px;
+    }
+  }
 }
 </style>
 
