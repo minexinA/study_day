@@ -14,13 +14,17 @@ const vuexLocal = new VuexPersistence({
 export default new Vuex.Store({
   state: {
     token:"",
-    mobile:""
+    mobile:"",
+    num:''
   },
   mutations: {
     saveToken(state,data){
       state.token=data.token
-      // state.mobile=data.mobile
       state.mobile=data.mobile.substr(0, 3) + '****' + data.mobile.substr(data.mobile.length - 4);
+    },
+    getnum(state,data){
+      state.num=data
+      console.log(data)
     }
   },
   actions: {

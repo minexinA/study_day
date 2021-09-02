@@ -13,6 +13,12 @@ import 'lib-flexible/flexible';
 
 import  './plugins/vant.js'
 
+import IScrollView from "vue-iscroll-view"
+
+import IScroll from "iscroll"
+
+Vue.use(IScrollView,IScroll)
+
 Vue.config.productionTip = false
 
 new Vue({

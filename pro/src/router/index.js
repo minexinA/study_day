@@ -53,6 +53,22 @@ const routes = [
   {
     path:"/pwd",
     component:()=>import("@/views/pwd")
+  },
+  {
+    path:"/gift",
+    component:()=>import("@/views/gift")
+  },
+  {
+    path:"/mywork",
+    component:()=>import("@/views/mywork")
+  },
+  {
+    path:"/detail",
+    component:()=>import("@/views/detail")
+  },
+  {
+    path:"/classnew",
+    component:()=>import("@/views/classnew")
   }
 ]
 

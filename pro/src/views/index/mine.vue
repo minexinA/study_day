@@ -11,7 +11,7 @@
                     <p>本周课程</p>
                 </div>
                 <div>
-                     <p style="color:red">0</p>
+                     <p style="color:red">{{$store.state.num}}</p>
                     <p>我的积分</p>
                 </div>
             </div>
@@ -39,6 +39,7 @@
                     
                 </div>
                 <b v-html="$store.state.mobile"></b>
+                <p><van-tag  type="primary" size="large" @click="gitnum"><van-icon name="checked" />已签到</van-tag></p>
             </div>
 
         </div>
@@ -46,7 +47,7 @@
     <!-- 基础信息 -->
     <div class="my">
 
-        <van-cell title="我的作业" is-link />
+        <van-cell title="我的作业" is-link @click="$router.push('/mywork')"/>
         <van-cell title="我的社区" is-link style="margin-top:0px"/>
         <van-cell title="课程订单" is-link />
         <van-cell title="图书订单" is-link style="margin-top:0px"/>
@@ -73,12 +74,15 @@ export default {
   methods: {
     setnew() {
       this.$router.push("/setup");
+    },
+    gitnum(){
+        this.$router.push('/gift')
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .mine {
   width: 100%;
   height: 100%;
@@ -136,6 +140,7 @@ export default {
       top: 70px;
       display: flex;
       justify-content: start;
+      position: relative;
       b{
           margin-left: 20px;
           margin-top: 15px;
@@ -148,6 +153,14 @@ export default {
         display: flex;
         justify-content: center;
         align-items: center;
+      }
+      p{
+          position: absolute;
+          right: 0;
+          top: 10px;
+          .tab{
+              font-size: 20px;
+          }
       }
     }
   }

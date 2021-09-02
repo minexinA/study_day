@@ -2,13 +2,15 @@
 import axios from 'axios'
 import { Toast } from 'vant'
 
+import store from "@/store/index"
+
 // 根据环境不同引入不同baseApi地址
 import { baseUrl } from '@/config'
 
 //2.创建axios对象信息
 const Server = axios.create({
     baseURL: baseUrl,
-    timeout: 5000,
+    timeout: 8000,
 })
 
 //3.定义前置拦截器。token值。。。
@@ -17,6 +19,7 @@ Server.interceptors.request.use(function (config) {
         message: '加载中...',
         forbidClick: true,
     })
+    config.headers['Authorization'] = 'Bearer'+' '+store.state.token
     return config
 }, function (error) {
     return Promise.reject(error)

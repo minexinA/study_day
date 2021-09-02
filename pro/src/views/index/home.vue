@@ -28,7 +28,7 @@
                 <p class="deep">资深教师</p>
                 <p class="more">更多<van-icon name="arrow" /></p>
             </div>
-            <div class="new" v-for="(item,index) in t_list[0].list" :key="index"> 
+            <div class="new" v-for="(item,index) in t_list" :key="index"> 
                 <van-card
                     :price="item.introduction"
                     :title="item.teacher_name"
@@ -43,7 +43,7 @@
                 <p class="deep">推荐课程</p>
                 <p class="more">更多<van-icon name="arrow" /></p>
             </div>
-            <div class="new" v-for="(item,index) in t_list[1].list" :key="index"> 
+            <div class="new" v-for="(item,index) in b_list" :key="index"> 
                 <van-card
                     :price="item.introduction"
                     :title="item.title"
@@ -58,7 +58,7 @@
                 <p class="deep">名师</p>
                 <p class="more">更多<van-icon name="arrow" /></p>
             </div>
-            <div class="new" v-for="(item,index) in t_list[2].list" :key="index"> 
+            <div class="new" v-for="(item,index) in c_list" :key="index"> 
                 <van-card
                     :price="item.introduction"
                     :title="item.teacher_name"
@@ -73,7 +73,9 @@
 export default {
   data() {
     return {
-        t_list:[]
+        t_list:[],
+        b_list:[],
+        c_list:[]
     };
   },
   mounted() {
@@ -89,7 +91,9 @@ export default {
     //获取讲师数据
     async getteacher(){
         var {data:res} = await this.$axios.get('/recommend/appIndex')
-        this.t_list=res.data
+        this.t_list=res.data[0].list
+        this.b_list=res.data[1].list
+        this.c_list=res.data[2].list
     }
   }
 };
