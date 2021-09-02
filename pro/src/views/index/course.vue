@@ -7,7 +7,6 @@
                         <p>{{item.introduction}}</p>
                     </template>
                 </van-card>
-
          </div>
         </iscroll-view>
     </div>
@@ -31,10 +30,9 @@ export default {
       this.list = res.data.list;
       console.log(this.list);
     },
-    pullUp() {
-    },
-    go(id){
-      this.$router.push("/detail?id="+id)
+    pullUp() {},
+    go(id) {
+      this.$router.push("/detail?id=" + id);
     }
   }
 };
@@ -55,12 +53,12 @@ export default {
     left: 0;
     bottom: 0;
     overflow: hidden;
-      padding-bottom: 60px;
-  box-sizing: border-box;
-    .tea{
-        background: #fff;
-        width: 80%;
-        margin: 10px auto;
+    padding-bottom: 60px;
+    box-sizing: border-box;
+    .tea {
+      background: #fff;
+      width: 80%;
+      margin: 10px auto;
     }
   }
 }
